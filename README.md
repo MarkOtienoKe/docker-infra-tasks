@@ -17,3 +17,14 @@ For the Frontend
 - The Backend service URL is: https://backend-761958992403.africa-south1.run.app/
 
 - The Frontend service Url is: https://frontend-761958992403.africa-south1.run.app/
+
+
+## How to run IoC code
+Initialize terraform
+- terraform init
+
+Plan the infrastructure:
+- terraform plan
+
+Apply the configuration:
+- terraform apply
