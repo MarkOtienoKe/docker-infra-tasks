@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-const BACKEND_URL = "https://backend-761958992403.africa-south1.run.app";
+const BACKEND_URL = "https://backend-829342983906.africa-south1.run.app";
 
 function App() {
   let [input, setInput] = React.useState('');
