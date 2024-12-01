@@ -14,9 +14,9 @@ For the Frontend
   - Once the backend application is running, copy its URL and update the BACKEND_URL variable in the App.js file with the copied URL.
 
 
-- The Backend service URL is: https://backend-761958992403.africa-south1.run.app/
+- The Backend service URL is: https://backend-829342983906.africa-south1.run.app/
 
-- The Frontend service Url is: https://frontend-761958992403.africa-south1.run.app/
+- The Frontend service Url is: https://frontend-829342983906.africa-south1.run.app/
 
 
 ## How to run IoC code

@@ -1,85 +1,61 @@
+# Project ID
 variable "project_id" {
-  description = "Google Cloud Project ID"
+  description = "The ID of the GCP project"
   type        = string
 }
 
+# Region
 variable "region" {
-  description = "Region for the resources"
+  description = "The region for GCP resources"
   type        = string
+  default     = "africa-south1"
 }
 
-variable "credentials_file" {
-  description = "Path to the GCP credentials JSON file"
+# VPC Name
+variable "vpc_name" {
+  description = "The name of the VPC network"
   type        = string
+  default     = "maks-vpc"
 }
 
-# Artifact Registry
-variable "registry_name" {
-  description = "Name of the Artifact Registry"
+# Subnet Name
+variable "subnet_name" {
+  description = "The name of the subnet"
   type        = string
-  default     = "my-docker-registry"
+  default     = "maks-subnet"
 }
 
-# MySQL Database
-variable "mysql_root_password" {
-  description = "Root password for the MySQL database"
+# Artifact Registry Name
+variable "artifact_registry_name" {
+  description = "The name of the Artifact Registry repository"
   type        = string
+  default     = "maks-repo"
 }
 
-variable "backend_db_name" {
-  description = "Database name for the backend"
+# SQL Instance Name
+variable "sql_instance_name" {
+  description = "The name of the SQL instance"
   type        = string
-  default     = "backend_db"
+  default     = "my-sql-instance"
 }
 
-variable "backend_user_name" {
-  description = "Username for the backend database"
+# Database Name
+variable "database_name" {
+  description = "The name of the database"
   type        = string
-  default     = "backend_user"
+  default     = "messages_db"
 }
 
-variable "backend_user_password" {
-  description = "Password for the backend database user"
+# MySQL User Name
+variable "mysql_user" {
+  description = "The username for the MySQL database"
   type        = string
+  default     = "msguser"
 }
 
-variable "allowed_networks" {
-  description = "Allowed IP ranges for Cloud SQL connections"
+# MySQL Password
+variable "mysql_password" {
+  description = "The password for the MySQL database user"
   type        = string
-  default     = "0.0.0.0/0" # Replace with secure ranges
-}
-
-# Cloud Build Triggers
-variable "github_owner" {
-  description = "GitHub repository owner"
-  type        = string
-}
-
-variable "backend_repo" {
-  description = "Backend repository name"
-  type        = string
-}
-
-variable "backend_branch" {
-  description = "Branch to trigger builds for the backend"
-  type        = string
-  default     = "main"
-}
-
-variable "frontend_repo" {
-  description = "Frontend repository name"
-  type        = string
-}
-
-variable "frontend_branch" {
-  description = "Branch to trigger builds for the frontend"
-  type        = string
-  default     = "main"
-}
-
-# VPC
-variable "subnet_cidr" {
-  description = "CIDR range for the VPC subnet"
-  type        = string
-  default     = "10.0.0.0/24"
+  sensitive   = true
 }

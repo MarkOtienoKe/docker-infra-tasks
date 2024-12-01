@@ -71,12 +71,13 @@ def msg_post_api(msg):
 def msg_get_api(msg_id):
     print(f"msg_get_api > msg_id = {msg_id}")
 
-    msg = Message.query.get(msg_id)
+    msgObj = Message.query.get(msg_id)
     
     # Check if message is not found
-    if not msg:
+    if msgObj==None:
         return jsonify({'error': 'Message not found'}), 404
-        
+    
+    msg = msgObj.message
     return jsonify({'msg': msg})
 
 

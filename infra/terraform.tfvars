@@ -1,8 +1,0 @@
-project_id        = "your-project-id"
-region            = "your-region"
-credentials_file  = "path/to/your/credentials.json"
-mysql_root_password = "root-password"
-backend_user_password = "user-password"
-github_owner      = "your-github-owner"
-backend_repo      = "backend-repo-name"
-frontend_repo     = "frontend-repo-name"

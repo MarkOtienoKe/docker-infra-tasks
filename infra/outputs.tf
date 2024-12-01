@@ -1,34 +1,29 @@
-output "artifact_registry_url" {
-  description = "URL of the Artifact Registry"
-  value       = "us-docker.pkg.dev/${var.project_id}/${google_artifact_registry_repository.docker_registry.name}"
-}
-
-output "mysql_instance_connection_name" {
-  description = "Connection name for the MySQL instance"
-  value       = google_sql_database_instance.mysql_instance.connection_name
-}
-
-output "backend_build_trigger_id" {
-  description = "ID of the backend build trigger"
-  value       = google_cloudbuild_trigger.backend_trigger.id
-}
-
-output "frontend_build_trigger_id" {
-  description = "ID of the frontend build trigger"
-  value       = google_cloudbuild_trigger.frontend_trigger.id
-}
-
-output "frontend_bucket_name" {
-  description = "Name of the storage bucket for frontend assets"
-  value       = google_storage_bucket.frontend_assets.name
-}
-
+# Output the VPC network name
 output "vpc_name" {
-  description = "Name of the created VPC"
-  value       = google_compute_network.custom_vpc.name
+  value = google_compute_network.my_vpc.name
 }
 
+# Output the subnet name
 output "subnet_name" {
-  description = "Name of the created subnet"
-  value       = google_compute_subnetwork.subnet.name
+  value = google_compute_subnetwork.my_subnet.name
+}
+
+# Output the Artifact Registry repository name
+output "artifact_registry_name" {
+  value = google_artifact_registry_repository.my_repo.name
+}
+
+# Output the SQL instance name
+output "sql_instance_name" {
+  value = google_sql_database_instance.my_sql_instance.name
+}
+
+# Output the database name
+output "database_name" {
+  value = google_sql_database.my_database.name
+}
+
+# Output the secret name
+output "mysql_secret_name" {
+  value = google_secret_manager_secret.mysql_credentials.secret_id
 }
