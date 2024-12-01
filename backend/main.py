@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 import os
 from google.cloud import secretmanager
 import json
+from flask_cors import CORS
 
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 
 def get_secret(secret_name):
     client = secretmanager.SecretManagerServiceClient()
