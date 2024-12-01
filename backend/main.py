@@ -2,16 +2,35 @@ from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+from google.cloud import secretmanager
+import json
 
 load_dotenv()
 
 app = Flask(__name__)
 
+def get_secret(secret_name):
+    client = secretmanager.SecretManagerServiceClient()
+    project_id = os.getenv('GOOGLE_CLOUD_PROJECT')  # Ensure this is set in your environment
+    secret_path = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
+    
+    response = client.access_secret_version(name=secret_path)
+    secret_data = response.payload.data.decode('UTF-8')
+    print(secret_data)
+    return secret_data
+
 # Configure the database connection using environment variables
+db_username = get_secret('secret')
+db_credentials = json.loads(db_username)
+
+print(db_credentials);
+
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}"
     f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
 )
+
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
