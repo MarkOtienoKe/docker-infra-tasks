@@ -25,9 +25,11 @@ db_credentials = json.loads(db_username)
 
 print(db_credentials);
 
+db_username = db_credentials.get('username')
+db_password = db_credentials.get('password')
+
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    f"mysql+pymysql://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}"
-    f"@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+    f"mysql+pymysql://{db_username}:{db_password}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
 )
 
 
