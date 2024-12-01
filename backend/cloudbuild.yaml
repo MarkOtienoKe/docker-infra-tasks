@@ -4,8 +4,12 @@ options:
 steps:
   # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 
-           'africa-south1-docker.pkg.dev/maks-infa/maks-repo/backend:${SHORT_SHA}', '-f','backend/Dockerfile'. '.']
+    args: [
+      'build', 
+      '-t', 'africa-south1-docker.pkg.dev/maks-infa/maks-repo/backend:${SHORT_SHA}', 
+      '-f', 'backend/Dockerfile', 
+      '.'
+    ]
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
