@@ -11,19 +11,16 @@ app = Flask(__name__)
 
 def get_secret(secret_name):
     client = secretmanager.SecretManagerServiceClient()
-    project_id = os.getenv('GOOGLE_CLOUD_PROJECT')  # Ensure this is set in your environment
+    project_id = os.getenv('GOOGLE_CLOUD_PROJECT')
     secret_path = f"projects/{project_id}/secrets/{secret_name}/versions/latest"
     
     response = client.access_secret_version(name=secret_path)
     secret_data = response.payload.data.decode('UTF-8')
-    print(secret_data)
     return secret_data
 
 # Configure the database connection using environment variables
-db_username = get_secret('secret')
-db_credentials = json.loads(db_username)
-
-print(db_credentials);
+db_creds = get_secret('secret')
+db_credentials = json.loads(db_creds)
 
 db_username = db_credentials.get('username')
 db_password = db_credentials.get('password')
